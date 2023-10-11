@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         Intent act_intent = getIntent();
         String message = act_intent.getStringExtra("sms");
+        //ticker_VM.setTickers(ticker_VM.getTickers().getValue());
+        //ticker_VM.addTickers(message);
         //Toast.makeText(------, message, Toast.LENGTH_LONG).show();
 
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.RECEIVE_SMS)
