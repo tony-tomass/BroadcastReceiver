@@ -43,7 +43,7 @@
             android:permission="android.permission.BROADCAST_SMS" >
 
             <intent-filter>
-                <action android:name="android.provider.Telephony.SMS_Received" />
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
