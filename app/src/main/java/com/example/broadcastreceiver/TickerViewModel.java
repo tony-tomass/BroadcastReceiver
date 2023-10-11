@@ -12,7 +12,7 @@ public class TickerViewModel extends ViewModel {
     public MutableLiveData<String> getUrl() {
         if (current_url == null) {
             current_url = new MutableLiveData<>();
-            String newURL = "www.google.com";
+            String newURL = "https://seekingalpha.com/";
             current_url.setValue(newURL);
         }
         return current_url;
@@ -22,7 +22,7 @@ public class TickerViewModel extends ViewModel {
         if (current_url == null) {
             current_url = new MutableLiveData<>();
         }
-            current_url.setValue(url);
+            current_url.setValue(current_url + "symbol/" + url);
     }
 
 }

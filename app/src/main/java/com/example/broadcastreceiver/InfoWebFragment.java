@@ -27,11 +27,12 @@ public class InfoWebFragment extends Fragment {
         // Inflate the layout for this fragment
         View frag_root = inflater.inflate(R.layout.fragment_infoweb, container, false);
         info_web_wv = frag_root.findViewById(R.id.info_web_WV);
+        info_web_wv.getSettings().setJavaScriptEnabled(true);
         ticker_VM = new ViewModelProvider(getActivity()).get(TickerViewModel.class);
         ticker_VM.getUrl().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                //
+                info_web_wv.loadUrl(ticker_VM.getUrl().getValue());
             }
         });
         return frag_root;

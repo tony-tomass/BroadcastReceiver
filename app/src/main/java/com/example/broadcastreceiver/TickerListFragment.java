@@ -21,7 +21,7 @@ public class TickerListFragment extends Fragment {
     AdapterView.OnItemClickListener item_click_listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            ticker_VM.setUrl("www.google.com");
+            ticker_VM.setUrl("https://seekingalpha.com/");
         }
     };
 
