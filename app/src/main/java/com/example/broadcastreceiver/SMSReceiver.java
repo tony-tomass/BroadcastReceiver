@@ -16,6 +16,7 @@ public class SMSReceiver extends BroadcastReceiver {
         final Bundle bundle = intent.getExtras();
 
         if (intent.getAction().equals(Telephony.Sms.Intents.SMS_RECEIVED_ACTION)) {
+
             if (bundle != null) {
                 final Object[] pdusObj = (Object[]) bundle.get("pdus");
                 String format = bundle.getString("format").toString();
