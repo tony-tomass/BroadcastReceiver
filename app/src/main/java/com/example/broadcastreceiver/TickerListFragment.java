@@ -21,10 +21,10 @@ public class TickerListFragment extends Fragment {
     private TickerViewModel ticker_VM;
     ListView ticker_lv;
 
-    AdapterView.OnItemClickListener item_click_listener = new AdapterView.OnItemClickListener() {
+    AdapterView.OnItemClickListener ticker_listener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            ticker_VM.setUrl("https://seekingalpha.com/");
+            ticker_VM.setUrl(ticker_lv.getItemAtPosition(i).toString());
         }
     };
 
@@ -42,10 +42,11 @@ public class TickerListFragment extends Fragment {
         ticker_lv = frag_root.findViewById(R.id.ticker_LV);
         LinkedList<String> entries = new LinkedList<>();
         entries.add("BAC");
-        entries.add("APPL");
+        entries.add("AAPL");
         entries.add("DIS");
         ArrayAdapter<String> entries_list = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, entries);
         ticker_lv.setAdapter(entries_list);
+        ticker_lv.setOnItemClickListener(ticker_listener);
         return frag_root;
     }
 

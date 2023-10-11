@@ -22,7 +22,7 @@ public class TickerViewModel extends ViewModel {
         if (current_url == null) {
             current_url = new MutableLiveData<>();
         }
-            current_url.setValue(current_url + "symbol/" + url);
+            current_url.setValue("https://seekingalpha.com/symbol/" + url);
     }
 
 }
