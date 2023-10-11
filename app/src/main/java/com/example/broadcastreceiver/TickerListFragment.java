@@ -10,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.LinkedList;
 
 
 public class TickerListFragment extends Fragment {
@@ -37,6 +40,12 @@ public class TickerListFragment extends Fragment {
 
         View frag_root = inflater.inflate(R.layout.fragment_tickerlist, container, false);
         ticker_lv = frag_root.findViewById(R.id.ticker_LV);
+        LinkedList<String> entries = new LinkedList<>();
+        entries.add("BAC");
+        entries.add("APPL");
+        entries.add("DIS");
+        ArrayAdapter<String> entries_list = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, entries);
+        ticker_lv.setAdapter(entries_list);
         return frag_root;
     }
 
