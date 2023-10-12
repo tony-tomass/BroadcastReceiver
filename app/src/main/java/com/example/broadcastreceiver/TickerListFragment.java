@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -67,6 +68,7 @@ public class TickerListFragment extends Fragment {
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                         android.R.layout.simple_list_item_1, tickers);
                 ticker_lv.setAdapter(adapter);
+                Toast.makeText(getActivity(), String.valueOf(tickers.size()), Toast.LENGTH_LONG).show();
             }
         });
     }

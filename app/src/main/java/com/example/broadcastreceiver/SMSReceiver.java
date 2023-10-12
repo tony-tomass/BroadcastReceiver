@@ -32,7 +32,7 @@ public class SMSReceiver extends BroadcastReceiver {
 
                     Intent act_intent = new Intent(context, MainActivity.class);
                     act_intent.putExtra("sms", message);
-                    act_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    act_intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(act_intent);
 
                 }
