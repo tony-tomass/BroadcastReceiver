@@ -43,11 +43,22 @@ public class MainActivity extends AppCompatActivity {
         String message = intent.getStringExtra("sms");
         if (message == null || message.isEmpty() || message.length() > 4) {
             Toast.makeText(getApplicationContext(), "Invalid length for ticker, try again!", Toast.LENGTH_LONG).show();
-        }
-        else {
+        } else if (!checkValidTicker(message)) {
+            Toast.makeText(getApplicationContext(), "Invalid ticker, try again!", Toast.LENGTH_LONG).show();
+        } else {
             ticker_VM.addTickers(message.toUpperCase());
         }
         //Toast.makeText(--------, message, Toast.LENGTH_LONG).show();
 
+    }
+
+    private boolean checkValidTicker(String str) {
+        char[] chars = str.toCharArray();
+        for (char c : chars) {
+            if (!Character.isLetter(c)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
