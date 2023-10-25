@@ -49,8 +49,6 @@ public class TickerViewModel extends ViewModel {
     public void addTickers(String ticker) {
         LinkedList<String> list = tickers_list.getValue();
         if (list.size() >= 6) {
-            //Question for Estaban: Should it be only replacing the sixth entry like
-            //the instructions says or should it be acting like a Queue
             //list.removeFirst();
             //Makes List work like queue instead of only replacing the 6th item in list
             for (int i = 0; i < list.size()-1; i++) {
