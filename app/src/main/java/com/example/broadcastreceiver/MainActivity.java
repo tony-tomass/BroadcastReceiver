@@ -7,14 +7,18 @@ import androidx.core.content.PackageManagerCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.Manifest;
 import android.widget.Toast;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
 
     private TickerViewModel ticker_VM;
+    public static final String PREF_NAME = "Tickers";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         ticker_VM = new ViewModelProvider(this).get(TickerViewModel.class);
 
+        SharedPreferences tickerPref = getSharedPreferences(PREF_NAME, 0);
+
         Intent act_intent = getIntent();
         String message = act_intent.getStringExtra("sms");
+
         //ticker_VM.setTickers(ticker_VM.getTickers().getValue());
         //ticker_VM.addTickers(message);
         //Toast.makeText(------, message, Toast.LENGTH_LONG).show();
