@@ -41,7 +41,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         String message = intent.getStringExtra("sms");
+        if (message == null || message.isEmpty() || message.length() > 4) {
+            Toast.makeText(getApplicationContext(), "Invalid length for ticker, try again!", Toast.LENGTH_LONG).show();
+        }
+        else {
+            ticker_VM.addTickers(message.toUpperCase());
+        }
         //Toast.makeText(--------, message, Toast.LENGTH_LONG).show();
-        ticker_VM.addTickers(message);
+
     }
 }
