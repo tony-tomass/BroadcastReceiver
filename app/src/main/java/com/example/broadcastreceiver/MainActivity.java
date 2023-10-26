@@ -19,7 +19,7 @@ import java.util.LinkedList;
 import java.util.Set;
 
 // TODO: IF THE PROJECT STARTS ACTING UP = WHEN IN DOUBT, INVALIDATE CACHES AND RESTART
-// TODO: Fix the latest ticker from SMS being added to the top of the list whenever exiting the app
+// TODO: Fix the latest tickers from SMS being added to the top of the list after exiting the app
 
 public class MainActivity extends AppCompatActivity {
 
