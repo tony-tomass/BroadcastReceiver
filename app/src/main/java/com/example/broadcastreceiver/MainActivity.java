@@ -19,6 +19,7 @@ import java.util.LinkedList;
 import java.util.Set;
 
 // TODO: IF THE PROJECT STARTS ACTING UP = WHEN IN DOUBT, INVALIDATE CACHES AND RESTART
+// TODO: When adding tickers, the latest one added will not show up, and the list will jumble in order => FIX THIS
 
 public class MainActivity extends AppCompatActivity {
 
@@ -82,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
     public void savePrefs() {
         SharedPreferences tickerPref = getSharedPreferences(PREF_NAME, 0);
         SharedPreferences.Editor editor = tickerPref.edit();
-        // Helps keep list order instead of jumbling them when doing addAll
         Set<String> set = new HashSet<>(ticker_VM.getTickers().getValue());
         Toast.makeText(getApplicationContext(), "Saving tickers...", Toast.LENGTH_SHORT).show();
         editor.putStringSet("ticks", set);
