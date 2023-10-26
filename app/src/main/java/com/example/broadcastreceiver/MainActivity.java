@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             ticker_VM.addTickers(message.toUpperCase());
         }
+        savePrefs();
         //Toast.makeText(--------, message, Toast.LENGTH_LONG).show();
 
     }
