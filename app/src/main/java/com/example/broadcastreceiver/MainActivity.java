@@ -13,7 +13,12 @@ import android.os.Bundle;
 import android.Manifest;
 import android.widget.Toast;
 
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
+
+// TODO: IF THE PROJECT STARTS ACTING UP = WHEN IN DOUBT, INVALIDATE CACHES AND RESTART
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
         ticker_VM = new ViewModelProvider(this).get(TickerViewModel.class);
 
         SharedPreferences tickerPref = getSharedPreferences(PREF_NAME, 0);
+        Set<String> saved = tickerPref.getStringSet("ticks", null);
+        if (saved != null) {
+            LinkedList<String> ticks = new LinkedList<>(saved);
+            ticker_VM.setTickers(ticks);
+        }
 
         Intent act_intent = getIntent();
         String message = act_intent.getStringExtra("sms");
@@ -67,5 +77,31 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    public void savePrefs() {
+        SharedPreferences tickerPref = getSharedPreferences(PREF_NAME, 0);
+        SharedPreferences.Editor editor = tickerPref.edit();
+        // Helps keep list order instead of jumbling them when doing addAll
+        Set<String> set = new HashSet<>(ticker_VM.getTickers().getValue());
+        Toast.makeText(getApplicationContext(), "Saving tickers...", Toast.LENGTH_SHORT).show();
+        editor.putStringSet("ticks", set);
+        editor.apply();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        savePrefs();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        savePrefs();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        savePrefs();
     }
 }
