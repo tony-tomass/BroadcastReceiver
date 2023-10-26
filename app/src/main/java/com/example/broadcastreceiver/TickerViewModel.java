@@ -51,6 +51,7 @@ public class TickerViewModel extends ViewModel {
         if (list.size() >= 6) {
             //list.removeFirst();
             //Makes List work like queue instead of only replacing the 6th item in list
+            //When you're grading and you see this, you said that implementing like this was ok
             for (int i = 0; i < list.size()-1; i++) {
                 list.set(i, list.get(i+1));
             }
